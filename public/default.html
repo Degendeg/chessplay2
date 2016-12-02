@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Play chess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/chessboard-0.3.0.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="page login" id='page-login'>
+        <div class='logo'></div>
+        <input id='username' class="form-control input-lg" placeholder="Your username.."></input>
+        <br />
+        <button id='login' class="btn btn-info btn-lg btn-block">Login</button>
+      </div>
+      <div class="page lobby well" id='page-lobby'>
+        <h1>Lobby</h1>
+        <h2 id='userLabel'></h2>
+        <hr />
+        <h3>Active games</h3>
+        <div id='gamesList'>
+          No active games
+        </div>
+        <hr />
+        <h3>Online players</h3>
+        <div id='userList'>
+          No users online
+        </div>
+      </div>
+
+      <div class="col-sm-4" id='page-game'>
+        <div class="page game">
+          <button class="btn btn-sm btn-default" id='game-back'>Back</button>
+          <button class="btn btn-sm" id='game-quit'>Resign</button>
+          <button class="btn btn-sm" id="takeback-btn">Undo</button>
+          <button class="btn btn-sm" id="reset-btn">Reset</button>
+          <div id="status" style="width: 400px" class="alert alert-info"></div>
+          <div id='game-board' style="width: 400px">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4" id='chat-game'>
+        <h1>Chat</h1>
+        <form action="">
+          <div class="input-group">
+            <input type="text" class="form-control" id="msgInput" autocomplete="off" placeholder="Type here.." required>
+            <span class="input-group-btn">
+				<button class="btn btn-default chat-btn">Send</button>
+			  </span>
+          </div>
+        </form>
+        <ul id="messages"></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chess.min.js"></script>
+    <script src="js/chessboard-0.3.0.min.js"></script>
+    <script src="js/default.js"></script>
+
+  </body>
+
+</html>
