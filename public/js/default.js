@@ -66,6 +66,10 @@ socket.on('reset', function() {
   updateStatus();
 });
 
+socket.on('logout', function(data) {
+  $('#alert').text('Player disconnected from the game.').show().delay(3000).fadeOut();
+});
+
 // chat code
 $('form').submit(function() {
   socket.emit('chat message', $('#msgInput').val(), username);
@@ -81,7 +85,6 @@ $('#msgInput').keyup(function() {
 socket.on('chat message', function(msg) {
   $('#messages').prepend($('<li class="chat-li">').text(msg.username).append($('<li>').text(msg.message)));
 });
-
 
 socket.on('logout', function(msg) {
   removeUser(msg.username);
@@ -111,11 +114,16 @@ $('#game-back').on('click', function() {
 });
 
 $('#game-resign').on('click', function() {
+  $("#myModal").modal();
+});
+
+$('#yes-modal-btn').on('click', function() {
   socket.emit('resign', {
-    userId: username,
-    gameId: serverGame.id
+	userId: username,
+	gameId: serverGame.id
   });
 
+  $('#myModal').modal('hide');
   $('#chat-game').hide();
   $('#page-game').hide();
   $('#page-lobby').show();
@@ -231,7 +239,7 @@ var updateStatus = function() {
 
   // checkmate?
   if (game.in_checkmate() === true) {
-    status = 'Game over, ' + moveColor + ' is in checkmate.';
+    status = 'Game over, ' + moveColor.toLowerCase() + ' is in checkmate.';
   }
 
   // draw?
@@ -245,12 +253,12 @@ var updateStatus = function() {
 
     // check?
     if (game.in_check() === true) {
-      status += ', ' + moveColor + ' is in check';
-      $('#checkAlert').text('Check on ' + moveColor.toLowerCase() + ' king!').show();
+      status += ', ' + moveColor.toLowerCase() + ' is in check';
+      $('#alert').text('Check on ' + moveColor.toLowerCase() + ' king!').show();
     }
     // no check?
     else {
-      $('#checkAlert').fadeOut();
+      $('#alert').fadeOut();
     }
   }
 

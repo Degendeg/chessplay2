@@ -38,12 +38,12 @@
       <div class="col-sm-4" id='page-game'>
         <div class="page game">
           <button class="btn btn-sm btn-default" id='game-back'>Back</button>
-          <button class="btn btn-sm" id='game-quit'>Resign</button>
+          <button class="btn btn-sm" id='game-resign'>Resign</button>
           <button class="btn btn-sm" id="takeback-btn">Undo</button>
           <button class="btn btn-sm" id="reset-btn">Reset</button>
           <div id="status" style="width: 400px" class="alert alert-info"></div>
-          <div id='game-board' style="width: 400px">
-          </div>
+          <div id='game-board' style="width: 400px"></div>
+		  <div id="alert" style="width: 400px; margin-top: 20px" class="alert alert-danger"></div>
         </div>
       </div>
       <div class="col-sm-4" id='chat-game'>
@@ -59,6 +59,24 @@
         <ul id="messages"></ul>
       </div>
     </div>
+	
+	<!-- Resign modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	<h4 class="modal-title">Resign</h4>
+	</div>
+	<div class="modal-body">
+	<p>Really resign?</p>
+	<button id="yes-modal-btn" class="btn btn-info">Yes</button>
+	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+	</div>
+	</div>
+
+	</div>
+	</div>
 
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
