@@ -70,24 +70,23 @@ socket.on('logout', function(data) {
   $('#alert').text('Player disconnected from the game.').show().delay(3000).fadeOut();
 });
 
-// chat code
-$('form').submit(function() {
-  socket.emit('chat message', $('#msgInput').val(), username);
-  $('#msgInput').val('');
-  return false;
-});
-// disable chatBtn if empty input
-$('.chatBtn').prop('disabled', true);
-$('#msgInput').keyup(function() {
-  $('.chatBtn').prop('disabled', this.value == "" ? true : false);
-});
-// send messages by appending new li working as message
-socket.on('chat message', function(msg) {
-  $('#messages').prepend($('<li class="chat-li">').text(msg.username).append($('<li>').text(msg.message)));
-});
-
 socket.on('logout', function(msg) {
   removeUser(msg.username);
+});
+
+// chat
+$("#inputSend").on('click', function(e) {
+	e.preventDefault();
+    socket.emit('chat message', $('#inputText').val(), username);
+	$('#inputText').val('');
+});
+
+// send messages by appending new li working as message
+socket.on('chat message', function(msg) {
+  $(".messages").append('<div class="message"><div class="content from-you"><p>' + msg.username + ': ' + msg.message + '</p></div></div>');
+  $(".messages").animate({
+		scrollTop: $(".messages").height()
+  }, 500);
 });
 
 //////////////////////////////

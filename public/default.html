@@ -14,6 +14,7 @@
   <body>
 
     <div class="container">
+	  <!-- Lobby -->
       <div class="page login" id='page-login'>
         <div class='logo'></div>
         <input id='username' class="form-control input-lg" placeholder="Your username.."></input>
@@ -35,6 +36,7 @@
         </div>
       </div>
 
+	  <!-- Game -->
       <div class="col-sm-4" id='page-game'>
         <div class="page game">
           <button class="btn btn-sm btn-default" id='game-back'>Back</button>
@@ -43,40 +45,48 @@
           <button class="btn btn-sm" id="reset-btn">Reset</button>
           <div id="status" style="width: 400px" class="alert alert-info"></div>
           <div id='game-board' style="width: 400px"></div>
-		  <div id="alert" style="width: 400px; margin-top: 20px" class="alert alert-danger"></div>
+          <div id="alert" style="width: 400px; margin-top: 20px" class="alert alert-danger"></div>
         </div>
       </div>
+	  
+	  <!-- Chat -->
       <div class="col-sm-4" id='chat-game'>
-        <h1>Chat</h1>
-        <form action="">
-          <div class="input-group">
-            <input type="text" class="form-control" id="msgInput" autocomplete="off" placeholder="Type here.." required>
-            <span class="input-group-btn">
-				<button class="btn btn-default chat-btn">Send</button>
-			  </span>
+        <div class='phone'>
+          <div class='top-bar'>
+            <h1>Chat</h1>
           </div>
-        </form>
-        <ul id="messages"></ul>
+          <div class='messages'>
+          </div>
+          <div class='text-input'>
+            <div class='field'>
+            </div>
+            <div class='field text'>
+              <input type='text' id='inputText' placeholder='Your message..' />
+            </div>
+            <div class='field'>
+              <label for='inputSend'><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></label>
+              <input type='submit' id='inputSend' class='hidden' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-	
-	<!-- Resign modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-	<!-- Modal content-->
-	<div class="modal-content">
-	<div class="modal-header">
-	<h4 class="modal-title">Resign</h4>
-	</div>
-	<div class="modal-body">
-	<p>Really resign?</p>
-	<button id="yes-modal-btn" class="btn btn-info">Yes</button>
-	<button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-	</div>
-	</div>
 
-	</div>
-	</div>
+    <!-- Resign modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Resign</h4>
+          </div>
+          <div class="modal-body">
+            <p>Really resign?</p>
+            <button id="yes-modal-btn" class="btn btn-info">Yes</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
